@@ -2,6 +2,7 @@
 #include<array>
 #include<vector>
 #include<iostream>
+#include "EdgeTest.h"
 
 using namespace cv;
 using namespace std;
@@ -52,12 +53,12 @@ double middle(Mat img)
   return avg;
 }
 
-int main(int, char**)
-{
-
-  for(int i = 0; i < TEST_IMGS.size(); i++)
-  {
-    cout << middle(imread(TEST_IMGS[i], 0)) << "\n";
-  }
-  return 0;
-}
+// int main(int, char**)
+// {
+//
+//   for(int i = 0; i < TEST_IMGS.size(); i++)
+//   {
+//     cout << middle(imread(TEST_IMGS[i], 0)) << "\n";
+//   }
+//   return 0;
+// }
