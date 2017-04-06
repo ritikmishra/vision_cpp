@@ -1,22 +1,17 @@
-#include<opencv2/opencv.hpp>
-#include<array>
-#include<vector>
-#include<iostream>
 #include "EdgeTest.h"
 
 using namespace cv;
-using namespace std;
 
-const array<string, 5> TEST_IMGS = {"HC0_N.png","VC0_C.png","VL0_G.png", "tape.jpg"};
+const std::array<std::string, 5> TEST_IMGS = {"HC0_N.png","VC0_C.png","VL0_G.png", "tape.jpg"};
 
 template<typename Object>
-int len(vector<Object> list)
+int len(std::vector<Object> list)
 {
   return list.size();
 }
 
 // Calculate the average of a list of numbers
-double avgCalc(vector<int> widths)
+double avgCalc(std::vector<int> widths)
 {
   try
   {
@@ -36,7 +31,7 @@ double avgCalc(vector<int> widths)
 double middle(Mat img)
 {
   double avg = 0;
-  vector<double> graph;
+  std::vector<double> graph;
   Mat column;
   for(int x = 0; x < img.size().width; x++)
   {
