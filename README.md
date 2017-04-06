@@ -10,6 +10,6 @@ I am looking into whether or not using vision code in C++ will be faster.
 
 1. Install OpenCV
 
-2. `./compile.sh` when inside the folder
+2. `./compile.sh Vision` when inside the folder
 
-3. Execute the binary that shows up.
+3. `./Vision`
