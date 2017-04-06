@@ -3,44 +3,32 @@
 
 using namespace cv;
 
-class PiCamera
+Mat PiCamera::getCurrentFrame()
 {
-public:
-  VideoCapture capture;
-  Mat frame;
+  capture >> frame;
+  return frame;
+}
 
+Mat PiCamera::getCurrentFrameResized(int x, int y)
+{
+  Mat retval;
+  resize(getCurrentFrame(), retval, Size(x,y));
+  return retval;
+}
 
-  PiCamera(int camnum);
-  
-  Mat getCurrentFrame()
-  {
-    capture >> frame;
-    return frame;
-  }
+Mat PiCamera::getCurrentFrameMultiplier(double x, double y)
+{
+  frame = getCurrentFrame();
+  Mat retval;
+  resize(frame, retval, Size(frame.cols * x, frame.rows * y));
+  return retval;
+}
 
-  Mat getCurrentFrameResized(int x, int y)
-  {
-    Mat retval;
-    resize(getCurrentFrame(), retval, Size(x,y));
-    return retval;
-  }
-
-  Mat getCurrentFrameMultiplier(double x, double y)
-  {
-    frame = getCurrentFrame();
-    Mat retval;
-    resize(frame, retval, Size(frame.cols * x, frame.rows * y));
-    return retval;
-  }
-
-  void cleanUp()
-  {
-    capture.release();
-    destroyAllWindows();
-  }
-
-
-};
+void PiCamera::cleanUp()
+{
+  capture.release();
+  destroyAllWindows();
+}
 
 PiCamera::PiCamera(int camnum)
 {

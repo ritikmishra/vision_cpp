@@ -5,13 +5,17 @@
 
 using namespace cv;
 
-class Picamera
+class PiCamera
 {
 public:
 
+  VideoCapture capture;
+  Mat frame;
+  
+  PiCamera(int);
   Mat getCurrentFrame();
-  Mat getCuurrentFrameResized(int x, int y);
-  Mat getCuurrentFrameMultiplier(double x, double y);
+  Mat getCurrentFrameResized(int, int);
+  Mat getCurrentFrameMultiplier(double, double);
   void cleanUp();
 
 
