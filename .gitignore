@@ -70,3 +70,4 @@ target/
 ### C++ thingies
 
 *.gch
+*.h.gch
