@@ -18,6 +18,10 @@ To run, install
 
 1. Install OpenCV
 
-2. `./compile.sh Vision` when inside the folder
+2. `./compile.sh` when inside the folder
 
 3. `./Vision`
+
+## It can't find <filename>.so, help!
+
+Make sure that `$LD_LIBRARY_PATH` contains a directory that has that file, usually `/lib` or `/usr/local/lib`.

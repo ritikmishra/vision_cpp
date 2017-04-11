@@ -1,24 +1,28 @@
 #include<opencv2/opencv.hpp>
+#include <sys/time.h>
 
-#ifndef _utils
-#define _utils
+#ifndef _edge_test
+#define _edge_test
 
-using namespace cv;
+template<typename Object>
+int len(std::vector<Object> list);
 
-class PiCamera
-{
-public:
+double avgCalc(std::vector<int> widths);
 
-  VideoCapture capture;
-  Mat frame;
-  
-  PiCamera(int);
-  Mat getCurrentFrame();
-  Mat getCurrentFrameResized(int, int);
-  Mat getCurrentFrameMultiplier(double, double);
-  void cleanUp();
+double middle(cv::Mat img);
 
+void init(int);
 
-};
+cv::Mat getCurrentFrame();
+
+cv::Mat getCurrentFrameResized(int, int);
+
+cv::Mat getCurrentFrameMultiplier(int, int);
+
+void cleanUp();
+
+int diff_ms(timeval, timeval);
+
+unsigned long getmsofday();
 
 #endif
