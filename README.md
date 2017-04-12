@@ -22,6 +22,10 @@ To run, install
 
 3. `./Vision`
 
-## It can't find <filename>.so, help!
+## It can't find \<filename\>.so, help!
 
 Make sure that `$LD_LIBRARY_PATH` contains a directory that has that file, usually `/lib` or `/usr/local/lib`.
+
+## It's segfaulting!
+
+Make sure you are connected to a NetworkTable.

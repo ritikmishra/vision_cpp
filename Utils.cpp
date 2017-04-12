@@ -8,20 +8,13 @@ Mat frame;
 
 const std::array<std::string, 5> TEST_IMGS = {"HC0_N.png","VC0_C.png","VL0_G.png", "tape.jpg"};
 
-template<typename Object>
-int len(std::vector<Object> list)
-{
-  return list.size();
-}
-
 // Calculate the average of a list of numbers
-// Confirmed working
 double avgCalc(std::vector<double> widths)
 {
   try
   {
     double avg = 0;
-    const int length = len(widths);
+    const int length = widths.size();
     for(int i = 0; i < length; i++)
     {
       avg = avg + widths[i];
@@ -33,7 +26,7 @@ double avgCalc(std::vector<double> widths)
 
 }
 
-// Confirmed working
+// Calculate how offcenter the vision tape is
 double middle(Mat img)
 {
   double avg = 0;
@@ -54,6 +47,7 @@ double middle(Mat img)
   return avg;
 }
 
+// start reading from the camera
 void init(int num)
 {
   capture = VideoCapture(0);
@@ -64,6 +58,7 @@ void init(int num)
   }
 }
 
+// return the current frame from the camera
 Mat getCurrentFrame()
 {
   capture >> frame;
@@ -71,6 +66,7 @@ Mat getCurrentFrame()
   return frame;
 }
 
+// return the current frame from the camera, resized with dimensions
 Mat getCurrentFrameResized(int y, int x)
 {
   capture >> frame;
@@ -79,6 +75,7 @@ Mat getCurrentFrameResized(int y, int x)
   return output;
 }
 
+// return the current frame from the camera, resized with a multiplier
 Mat getCurrentFrameMultiplier(int x, int y)
 {
   capture >> frame;
@@ -87,25 +84,28 @@ Mat getCurrentFrameMultiplier(int x, int y)
   return output;
 }
 
+// clean up
 void cleanUp()
 {
   capture.release();
   destroyAllWindows();
 }
 
-
+// get the difference between 2 millisecond counts of type timeval. Used for fps calculations
 int diff_ms(timeval t1, timeval t2)
 {
     return (((t1.tv_sec - t2.tv_sec) * 1000000) +
             (t1.tv_usec - t2.tv_usec))/1000;
 }
 
+// get the time of day in milliseconds. Used for fps calculations
 unsigned long getmsofday() {
    struct timeval tv;
    gettimeofday(&tv, NULL);
    return (long long)tv.tv_sec*1000 + tv.tv_usec/1000;
 }
 
+// A main() function for testing
 // int main(int argc, char** args)
 // {
 //   timeval startTime, endTime;
