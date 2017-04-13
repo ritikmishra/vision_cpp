@@ -47,7 +47,7 @@ int main(int argc, char* argv[])
   Mat frame = getCurrentFrame();
   Mat frame_mask(frame.size(), frame.type());
 
-
+  std::cout << "Waiting for 10 seconds to connect to the roboRIO before starting vision \n";
   endTime = getmsofday() + 10000;
   while(getmsofday() != endTime); // wait for 10 seconds to allow a connection to the RoboRIO
 
