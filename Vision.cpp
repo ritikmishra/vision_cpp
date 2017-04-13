@@ -47,6 +47,11 @@ int main(int argc, char* argv[])
   Mat frame = getCurrentFrame();
   Mat frame_mask(frame.size(), frame.type());
 
+
+  endTime = getmsofday() + 10000;
+  while(getmsofday() != endTime); // wait for 10 seconds to allow a connection to the RoboRIO
+
+
   // run vision forever
   while(true)
   {
